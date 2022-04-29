@@ -81,62 +81,71 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Account</h1>
+                        <h1 class="mt-4">Account add</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">List of user accounts in the system</li>
+                            <li class="breadcrumb-item active">Add a new account in system</li>
                         </ol>
-
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Account table
+                                Add Account
                             </div>
                             <div class="card-body">
-                                
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>#</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>
-                                                <a href="edit-category.html">Edit</a> | <a href="#">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>
-                                                <a href="edit-category.html">Edit</a> | <a href="#">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>
-                                                <a href="edit-category.html">Edit</a> | <a href="#">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>
-                                                <a href="edit-category.html">Edit</a> | <a href="#">Delete</a>
-                                            </td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                </table>
-                                <a href="add-category.html">
-                                    <button type="submit" class="btn btn-primary">Create</button>
-                                </a>
-
+                                <form action="">
+                                    <div class="form-group mb-3">
+                                        <label for="name" style="font-weight: bold;">Name</label>
+                                        <input type="text" name="name" id="name" class="form-control validate" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="role" style="font-weight: bold;">Role</label>
+                                        <select name="role" id="role" class="form-control validate">
+                                            <option value="">Choose role</option>
+                                            <option value="1">Role 1</option>
+                                            <option value="2">Role 2</option>
+                                            <option value="3">Role 3</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="email" style="font-weight: bold;">Email address </label>
+                                        <input type="text" name="email" id="email" class="form-control validate" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="address" style="font-weight: bold;">Address</label>
+                                        <input type="text" name="address" id="address" class="form-control validate" required>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                            <label for="expire_date" style="font-weight: bold;">Date of birth </label>
+                                            <input id="date" name="expire_date" type="date" class="form-control validate" data-large-mode="true" />
+                                        </div>
+                                        <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                            <label for="gender" style="font-weight: bold;">Gender</label>
+                                            <select name="gender" id="gender" class="form-control validate">
+                                                <option value="">Choose gender</option>
+                                                <option value="1">Male</option>
+                                                <option value="2">Female</option>
+                                                <option value="3">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label for="image" style="font-weight: bold;">Image</label>
+                                        <input type="file" name="image" id="image" class="form-control validate" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="password" style="font-weight: bold;">Password</label>
+                                        <input type="password" name="password" id="password" class="form-control validate" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="confirm-password" style="font-weight: bold;">Confirm password</label>
+                                        <input type="password" name="confirm-password" id="confirm-password" class="form-control validate" required>
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -150,5 +159,6 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        
     </body>
 </html>
