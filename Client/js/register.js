@@ -1,13 +1,23 @@
 const form = document.querySelector("form"),
 
-nameField = form.querySelector(".name"),
-nameInput = nameField.querySelector("input"),
+firstNameField = form.querySelector(".first-name"),
+firstNameInput = firstNameField.querySelector("input"),
+
+lastNameField = form.querySelector(".last-name"),
+lastNameInput = lastNameField.querySelector("input"),
+
 
 // addressField = form.querySelector(".address"),
 // addressInput = nameField.querySelector("input"),
 
 eField = form.querySelector(".email"),
 eInput = eField.querySelector("input"),
+
+phoneNumberField = form.querySelector(".phone-number"),
+phoneNumberInput = phoneNumberField.querySelector("input"),
+
+addressField = form.querySelector(".address"),
+addressInput = addressField.querySelector("input"),
 
 pField = form.querySelector(".password"),
 pInput = pField.querySelector("input"),
@@ -18,17 +28,27 @@ confirmInput = confirmField.querySelector("input");
 
 form.onsubmit = (e) => {
     e.preventDefault();
-    if (nameInput.value == "") {
-        nameField.classList.add("shake", "error");
+    if (firstNameInput.value == "") {
+        firstNameField.classList.add("shake", "error");
     }
-    // if (addressInput.value == "") {
-    //     addressField.classList.add("shake", "error");
-    // }
+    if (lastNameInput.value == "") {
+        lastNameField.classList.add("shake", "error");
+    }
+    if (addressInput.value == "") {
+        addressField.classList.add("shake", "error");
+    }
     if (eInput.value == "") {
         eField.classList.add("shake", "error");
     } else {
         checkEmail();
     }
+
+    if (phoneNumberInput.value == "") {
+        phoneNumberField.classList.add("shake", "error");
+    } else {
+        checkPhoneNumber();
+    }
+
     if (pInput.value == "") {
         pField.classList.add("shake", "error");
     } else {
@@ -39,29 +59,36 @@ form.onsubmit = (e) => {
     setTimeout(() => {
         eField.classList.remove("shake");
         pField.classList.remove("shake");
-        nameField.classList.remove("shake");
+        firstNameField.classList.remove("shake");
+        lastNameField.classList.remove("shake");
+        phoneNumberField.classList.remove("shake");
         addressField.classList.remove("shake");
     }, 500);
 
-    nameInput.onkeyup = () => {
-        if (nameInput.value == "") {
-            nameField.classList.add("error");
+    firstNameInput.onkeyup = () => {
+        if (firstNameInput.value == "") {
+            firstNameField.classList.add("error");
         } else {
-            nameField.classList.remove("error");
+            firstNameField.classList.remove("error");
         }
         // checkName();
     }
 
-    // function checkName() {
-    //     let pattern = /[a-zA-Z][a-zA-Z ]{1,}/;
-    //     if (!nameInput.value.match(pattern)) {
-    //         nameField.classList.add("error");
-    //         let errorTxt = nameField.querySelector(".error-txt");
-    //         (nameInput.value != "") ? errorTxt.innerHTML = "Invalid name" : errorTxt.innerHTML = "Name can not be empty";
-    //     } else {
-    //         nameField.classList.remove("error");
-    //     }
-    // }
+    lastNameInput.onkeyup = () => {
+        if (lastNameInput.value == "") {
+            lastNameField.classList.add("error");
+        } else {
+            lastNameField.classList.remove("error");
+        }
+    }
+
+    addressInput.onkeyup = () => {
+        if (addressInput.value == "") {
+            addressField.classList.add("error");
+        } else {
+            addressField.classList.remove("error");
+        }
+    }
 
     eInput.onkeyup = () => {
         checkEmail();
@@ -78,6 +105,20 @@ form.onsubmit = (e) => {
         }
     }
 
+    phoneNumberInput.onkeyup = () => {
+        checkPhoneNumber();
+    }
+
+    function checkPhoneNumber() {
+        let pattern = /^[0-9]{10}$/;
+        if (!phoneNumberInput.value.match(pattern)) {
+            phoneNumberField.classList.add("error");
+            let errorTxt = phoneNumberField.querySelector(".error-txt");
+            (phoneNumberInput.value != "") ? errorTxt.innerHTML = "Invalid phone number" : errorTxt.innerHTML = "Phone number can be not empty";
+        } else {
+            phoneNumberField.classList.remove("error");
+        }
+    }
 
     pInput.onkeyup = () => {
         checkPassword();
