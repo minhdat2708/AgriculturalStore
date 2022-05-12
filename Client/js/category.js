@@ -31,12 +31,33 @@ async function getCategories() {
 }
 
 function createCategories(data) {
+    ulTag.appendChild(createFirstLi(true));
+    ulTag2.appendChild(createFirstLi(false));
+
     data.forEach(element => {
         ulTag.appendChild(createLi(element, true));
         if (ulTag2 !== null) {
             ulTag2.appendChild(createLi(element, false));
         }
     });
+}
+
+function createFirstLi(isReload)
+{
+    let li = document.createElement('li');
+    let a = document.createElement('a');
+    if (isReload) {
+        a.href = 'shop-grid.html';
+    } else {
+        a.href = '#';
+        a.addEventListener('click', async (e) => {
+            loadProducts(e.target.id);
+        })
+    }
+    a.innerHTML = 'All';
+    a.id = -1;
+    li.appendChild(a);
+    return li;
 }
 
 function createLi(data, isReload) {
