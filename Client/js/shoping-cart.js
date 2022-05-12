@@ -22,6 +22,8 @@ async function loadProductsCart() {
             createProductsCart(element);
         });
 
+        updateTotal(data);
+
         var proQty = $('.pro-qty');
         proQty.on('click', '.qtybtn', function () {
             var $button = $(this);
@@ -63,8 +65,17 @@ function createProductsCart(data) {
         '<td class="shoping__cart__item__close">' +
         '<span class="icon_close"></span>' +
         '</td>' +
-        '</tr>'
+        '</tr>';
+}
 
+function updateTotal(data) {
+    let total = 0;
+    data.forEach(element => {
+        total += parseFloat(element.price * element.quantity);
+    });
+
+    document.getElementById('total').innerHTML = '$' + total;
+    document.getElementById('subtotal').innerHTML = '$' + total;
 }
 
 loadProductsCart();
