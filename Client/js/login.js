@@ -29,7 +29,7 @@ form.onsubmit = async (e) => {
         if (!eInput.value.match(pattern)) {
             eField.classList.add("error");
             let errorTxt = eField.querySelector(".error-txt");
-            (eInput.value != "") ? errorTxt.innerHTML = "Invalid email": errorTxt.innerHTML = "Email can be not empty";
+            (eInput.value != "") ? errorTxt.innerHTML = "Wrong email fomat" : errorTxt.innerHTML = "Email can be not empty";
         } else {
             eField.classList.remove("error");
         }

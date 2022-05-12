@@ -226,65 +226,9 @@
         <div class="container">
             
             <div class="checkout__form">
-                <h4>Billing Details</h4>
                 <form class="ordered" action="#">
                     <div class="row">
-                        <div class="col-lg-8 col-md-6">
-                            <div class="checkout__input name">
-                                <div class="input-area">
-                                    <p>Your name<span>*</span></p>
-                                    <input type="text" placeholder="Your name">
-                                </div>
-                                <div class="error error-txt">
-                                    Please enter your name
-                                </div>
-                            </div>
-                            <div class="checkout__input country">
-                                <div class="input-area">
-                                    <p>Country<span>*</span></p>
-                                    <input type="text" placeholder="Enter your country">
-                                </div>
-                                <div class="error error-txt">
-                                    Please enter your country
-                                </div>
-                            </div>
-                            <div class="checkout__input address">
-                                <div class="input-area">
-                                    <p>Address<span>*</span></p>
-                                    <input name="address" type="text" placeholder="Enter your address">
-                                </div>
-                                <div class="error error-txt">
-                                    Please enter your address
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input phone">
-                                        <div class="input-area">
-                                            <p>Phone<span>*</span></p>
-                                            <input name="phone" type="text" placeholder="Phone Number">
-                                        </div>
-                                        <div class="error error-txt">
-                                            Please enter your phone number
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input email">
-                                        <div class="input-area">
-                                            <p>Email<span>*</span></p>
-                                            <input name="email" type="text" placeholder="Email address">
-                                        </div>
-                                        <div class="error error-txt">
-                                            Please enter your email address
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-12 col-md-6">
                             <div class="checkout__order">
                                 <h4>Your Order</h4>
                                 <div class="checkout__order__products">Products <span>Total</span></div>
@@ -296,7 +240,7 @@
                                 <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
                                 <div class="checkout__order__total">Total <span>$750.99</span></div>
                                 
-                                <button id="status" type="submit" class="site-btn"> 
+                                <button id="status" type="submit" class="site-btn" onclick="alertSuccess()"> 
                                     PLACE ORDER
                                 </button>
                             </div>
