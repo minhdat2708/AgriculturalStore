@@ -146,13 +146,8 @@ form.onsubmit = async (e) => {
         }
     }
 
-<<<<<<< HEAD
     if (!firstNameField.classList.contains("error") && !lastNameField.classList.contains("error") && !addressField.classList.contains("error") && !eField.classList.contains("error") && !phoneNumberField.classList.contains("error") && !pField.classList.contains("error") && !confirmField.classList.contains("error")) {
-        window.location.href = "#";
-=======
-    if (!eField.classList.contains("error") && !pField.classList.contains("error")) {
         register();
->>>>>>> 5275c68039f99cc42e661eb0c7ece638734043f0
     }
 }
 
