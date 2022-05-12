@@ -66,7 +66,7 @@ function updateSubTotal(productId) {
 function createProductsCart(data) {
     table.innerHTML = table.innerHTML + '<tr id="tr_' + data.id + '">' +
         '<td class="shoping__cart__item">' +
-        '<img src="img/cart/cart-1.jpg" alt="">' +
+        '<img src="' + data.previewImage + '" alt="">' +
         '<h5>' + data.name + '</h5>' +
         '</td>' +
         '<td class="shoping__cart__price_' + data.id + '">' +
