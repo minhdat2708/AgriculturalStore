@@ -55,7 +55,7 @@ async function loadProducts(categoryId) {
             'Accept': 'application/json',
         },
     };
-    const url = 'https://localhost/agricultural-products-store/public/api/v1/categories/' + categoryId + '/products';
+    const url = 'https://localhost/agricultural-products-store/public/api/v1' + (categoryId == -1 ? '' : ('/categories/' + categoryId)) + '/products';
 
     let response = await fetch(url, init);
     if (response.status === 200) {
@@ -90,3 +90,4 @@ function createProduct(product) {
 }
 
 getCategories();
+loadProducts(-1);
