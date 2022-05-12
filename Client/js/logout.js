@@ -26,7 +26,7 @@ async function logout() {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Authorization': 'Bearer Token ' + localStorage.getItem('accessToken'),
+            'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
         },
     };
     const url = 'https://localhost/agricultural-products-store/public/api/v1/logout';

@@ -2,6 +2,11 @@ let ulTag = document.getElementsByClassName('hero__categories')[0].childNodes[3]
 let ulTag2 = document.getElementById('categories');
 
 function check() {
+    if (window.location.href.search('shop-grid') === -1)
+    {
+        return;
+    }
+    
     let array = window.location.href.split('?');
     if (array.length > 1) {
         let categoryId = array[1].split('=')[1];
@@ -32,7 +37,9 @@ async function getCategories() {
 
 function createCategories(data) {
     ulTag.appendChild(createFirstLi(true));
-    ulTag2.appendChild(createFirstLi(false));
+    if (ulTag2 !== null) {
+        ulTag2.appendChild(createFirstLi(false));
+    }
 
     data.forEach(element => {
         ulTag.appendChild(createLi(element, true));
