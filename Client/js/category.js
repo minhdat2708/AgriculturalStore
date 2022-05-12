@@ -114,13 +114,13 @@ function createProduct(product) {
         '<div class="product__item">' +
         '<div class="product__item__pic set-bg" data-setbg="' + product.previewImage + '" style="background-image: url(&quot;' + product.previewImage + '&quot;);">' +
         '<ul class="product__item__pic__hover">' +
-        '<li><a href="shop-details.html?product_id="' + product.id + '><i class="fa fa-heart"></i></a></li>' +
-        '<li><a href="shop-details.html?product_id="' + product.id + '"><i class="fa fa-retweet"></i></a></li>' +
-        '<li><a href="shop-details.html?product_id="' + product.id + '"><i class="fa fa-shopping-cart"></i></a></li>' +
+        '<li><a href="shop-details.html?product_id=' + product.id + '"><i class="fa fa-heart"></i></a></li>' +
+        '<li><a href="shop-details.html?product_id=' + product.id + '"><i class="fa fa-retweet"></i></a></li>' +
+        '<li><a href="shop-details.html?product_id=' + product.id + '"><i class="fa fa-shopping-cart"></i></a></li>' +
         '</ul>' +
         '</div>' +
         '<div class="product__item__text">' +
-        '<h6><a href="shop-details.html?product_id="' + product.id + '">' + product.name + '</a></h6>' +
+        '<h6><a href="shop-details.html?product_id=' + product.id + '">' + product.name + '</a></h6>' +
         '<h5>$' + product.price + '</h5>' +
         '</div>' +
         '</div>' +
