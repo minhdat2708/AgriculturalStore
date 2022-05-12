@@ -1,27 +1,25 @@
 const form = document.querySelector("form"),
 
-firstNameField = form.querySelector(".first-name"),
-firstNameInput = firstNameField.querySelector("input"),
+    firstNameField = form.querySelector(".first-name"),
+    firstNameInput = firstNameField.querySelector("input"),
 
-lastNameField = form.querySelector(".last-name"),
-lastNameInput = lastNameField.querySelector("input"),
+    lastNameField = form.querySelector(".last-name"),
+    lastNameInput = lastNameField.querySelector("input"),
 
-eField = form.querySelector(".email"),
-eInput = eField.querySelector("input"),
+    eField = form.querySelector(".email"),
+    eInput = eField.querySelector("input"),
 
-phoneNumberField = form.querySelector(".phone-number"),
-phoneNumberInput = phoneNumberField.querySelector("input"),
+    phoneNumberField = form.querySelector(".phone-number"),
+    phoneNumberInput = phoneNumberField.querySelector("input"),
 
-addressField = form.querySelector(".address"),
-addressInput = addressField.querySelector("input"),
+    addressField = form.querySelector(".address"),
+    addressInput = addressField.querySelector("input"),
 
-pField = form.querySelector(".password"),
-pInput = pField.querySelector("input"),
+    pField = form.querySelector(".password"),
+    pInput = pField.querySelector("input"),
 
-confirmField =  form.querySelector(".confirm-password"),
-confirmInput = confirmField.querySelector("input");
-
-console.log(form);
+    confirmField = form.querySelector(".confirm-password"),
+    confirmInput = confirmField.querySelector("input");
 
 form.onsubmit = async (e) => {
     e.preventDefault();
@@ -50,6 +48,10 @@ form.onsubmit = async (e) => {
         pField.classList.add("shake", "error");
     } else {
         checkPassword();
+    }
+
+    if (pInput.value !== confirmInput.value) {
+        matchPassword();
     }
 
     setTimeout(() => {
@@ -94,7 +96,7 @@ form.onsubmit = async (e) => {
         if (!eInput.value.match(pattern)) {
             eField.classList.add("error");
             let errorTxt = eField.querySelector(".error-txt");
-            (eInput.value != "") ? errorTxt.innerHTML = "Invalid email" : errorTxt.innerHTML = "Email can be not empty";
+            (eInput.value != "") ? errorTxt.innerHTML = "Invalid email": errorTxt.innerHTML = "Email can be not empty";
         } else {
             eField.classList.remove("error");
         }
@@ -109,7 +111,7 @@ form.onsubmit = async (e) => {
         if (!phoneNumberInput.value.match(pattern)) {
             phoneNumberField.classList.add("error");
             let errorTxt = phoneNumberField.querySelector(".error-txt");
-            (phoneNumberInput.value != "") ? errorTxt.innerHTML = "Invalid phone number" : errorTxt.innerHTML = "Phone number can be not empty";
+            (phoneNumberInput.value != "") ? errorTxt.innerHTML = "Invalid phone number": errorTxt.innerHTML = "Phone number can be not empty";
         } else {
             phoneNumberField.classList.remove("error");
         }
@@ -124,7 +126,7 @@ form.onsubmit = async (e) => {
         if (!pInput.value.match(pattern)) {
             pField.classList.add("error");
             let errorTxt = pField.querySelector(".error-txt");
-            (pInput.value != "") ? errorTxt.innerHTML = "Password at least 8 characters" : errorTxt.innerHTML = "Password can be not empty";
+            (pInput.value != "") ? errorTxt.innerHTML = "Password at least 8 characters": errorTxt.innerHTML = "Password can be not empty";
         } else {
             pField.classList.remove("error");
         }
@@ -145,12 +147,11 @@ form.onsubmit = async (e) => {
     }
 
     if (!eField.classList.contains("error") && !pField.classList.contains("error")) {
-        window.location.href = "#";
+        register();
     }
 }
 
-function register()
-{
+async function register() {
     let inputTags = document.getElementsByTagName('input')
     const init = {
         method: 'POST',
@@ -160,24 +161,36 @@ function register()
             'Accept': 'application/json',
         },
         body: JSON.stringify({
-            'email': inputTags[0].value,
-            'password': md5(inputTags[1].value)
+            'first_name': inputTags[0].value,
+            'last_name': inputTags[1].value,
+            'email': inputTags[2].value,
+            'phone': inputTags[3].value,
+            'address': inputTags[4].value,
+            'password': md5(inputTags[5].value)
         })
     };
-    const url = 'https://localhost/agricultural-products-store/public/api/v1/login';
+    const url = 'https://localhost/agricultural-products-store/public/api/v1/register';
 
     let response = await fetch(url, init);
-    if (response.status === 200) {
+    if (response.status === 201) {
+        alertSuccess();
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 2000)
+    } else if (response.status === 409) {
         let responseJson = await response.json();
-        localStorage.setItem("userData", JSON.stringify(responseJson.data));
-        localStorage.setItem("accessToken", responseJson.accessToken);
-        window.location.href = 'index.html'
-    } else if (response.status === 401) {
-        let responseJson = 'Invalid email or password';
-        alertLogin(responseJson)
+        alertFail(responseJson.errors);
     }
 }
 
-function alertLogin(message) {
-    alert('fasfasfas')
+function alertSuccess(message) {
+    alert('success')
+}
+
+function alertFail(errors) {
+    let message = '';
+    message = (errors.email ?? '') + '\n' + (errors.phone ?? '') + '\n';
+    setTimeout(() => {
+        alert(message);
+    }, 1)
 }
