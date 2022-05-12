@@ -1,5 +1,4 @@
 let ulTag = document.getElementsByClassName('hero__categories')[0].childNodes[3];
-ulTag.innerHTML = ''
 
 async function getCategories() {
     const init = {
