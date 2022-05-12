@@ -1,4 +1,5 @@
 let ulTag = document.getElementsByClassName('hero__categories')[0].childNodes[3];
+let ulTag2 = document.getElementById('categories');
 
 async function getCategories() {
     const init = {
@@ -22,15 +23,23 @@ async function getCategories() {
 function createCategories(data) {
     console.log(data);
     data.forEach(element => {
-        let li = document.createElement('li');
-        let a = document.createElement('a');
-        a.href = '#';
-        a.innerHTML = element.name;
-        a.id = element.id;
-        li.appendChild(a);
-        ulTag.appendChild(li);
+        ulTag.appendChild(createLi(element));
+        if (ulTag2 !== null)
+        {
+            ulTag2.appendChild(createLi(element));
+        }
     });
+}
 
+function createLi(data)
+{
+    let li = document.createElement('li');
+    let a = document.createElement('a');
+    a.href = '#';
+    a.innerHTML = data.name;
+    a.id = data.id;
+    li.appendChild(a);
+    return li;
 }
 
 getCategories();
