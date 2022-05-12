@@ -23,7 +23,7 @@ confirmInput = confirmField.querySelector("input");
 
 console.log(form);
 
-form.onsubmit = (e) => {
+form.onsubmit = async (e) => {
     e.preventDefault();
     if (firstNameInput.value == "") {
         firstNameField.classList.add("shake", "error");
@@ -147,4 +147,37 @@ form.onsubmit = (e) => {
     if (!eField.classList.contains("error") && !pField.classList.contains("error")) {
         window.location.href = "#";
     }
+}
+
+function register()
+{
+    let inputTags = document.getElementsByTagName('input')
+    const init = {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+            'email': inputTags[0].value,
+            'password': md5(inputTags[1].value)
+        })
+    };
+    const url = 'https://localhost/agricultural-products-store/public/api/v1/login';
+
+    let response = await fetch(url, init);
+    if (response.status === 200) {
+        let responseJson = await response.json();
+        localStorage.setItem("userData", JSON.stringify(responseJson.data));
+        localStorage.setItem("accessToken", responseJson.accessToken);
+        window.location.href = 'index.html'
+    } else if (response.status === 401) {
+        let responseJson = 'Invalid email or password';
+        alertLogin(responseJson)
+    }
+}
+
+function alertLogin(message) {
+    alert('fasfasfas')
 }

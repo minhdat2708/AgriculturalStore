@@ -1,6 +1,6 @@
 let userData = JSON.parse(localStorage.getItem('userData'));
 if (localStorage.getItem('userData') !== null) {
-    let e = document.getElementById('header__top__right__auth')
+    let e = document.getElementsByClassName('header__top__right__auth')[1]
     e.childNodes[1].href = '#'
     e.childNodes[1].childNodes[1].data = ' Logout';
     e.childNodes[1].childNodes[0].className = 'fa fa-sign-out'
@@ -11,7 +11,7 @@ if (localStorage.getItem('userData') !== null) {
 }
 
 function createUserHeader() {
-    let e = document.getElementById('header__top__right__social')
+    let e = document.getElementsByClassName('header__top__right__social')[1]
     let div = document.createElement('div');
     div.id = 'header__top__right_user';
     div.className = 'header__top__right__auth';
