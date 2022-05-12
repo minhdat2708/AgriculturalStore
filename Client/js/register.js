@@ -6,10 +6,6 @@ firstNameInput = firstNameField.querySelector("input"),
 lastNameField = form.querySelector(".last-name"),
 lastNameInput = lastNameField.querySelector("input"),
 
-
-// addressField = form.querySelector(".address"),
-// addressInput = nameField.querySelector("input"),
-
 eField = form.querySelector(".email"),
 eInput = eField.querySelector("input"),
 
@@ -25,6 +21,7 @@ pInput = pField.querySelector("input"),
 confirmField =  form.querySelector(".confirm-password"),
 confirmInput = confirmField.querySelector("input");
 
+console.log(form);
 
 form.onsubmit = (e) => {
     e.preventDefault();
@@ -55,7 +52,6 @@ form.onsubmit = (e) => {
         checkPassword();
     }
 
-
     setTimeout(() => {
         eField.classList.remove("shake");
         pField.classList.remove("shake");
@@ -71,7 +67,6 @@ form.onsubmit = (e) => {
         } else {
             firstNameField.classList.remove("error");
         }
-        // checkName();
     }
 
     lastNameInput.onkeyup = () => {

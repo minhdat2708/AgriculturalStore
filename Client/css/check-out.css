@@ -1,0 +1,23 @@
+
+form .checkout__input.error input {
+    border-color: #dc3545;
+}
+
+form .checkout__input .icon {
+    left: 15px;
+    color: #bfbfbf;
+}
+
+form .checkout__input .error-txt {
+    margin-top: 5px;
+    color: #dc3545;
+    text-align: left;
+}
+
+form .checkout__input .error {
+    display: none;
+}
+
+form .checkout__input.error .error {
+    display: block;
+}
